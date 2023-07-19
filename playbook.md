@@ -81,7 +81,6 @@ sudo nano nginx-playbook.yml
 # YAML file with --- three dashes
 # Why playbook - apply repetitive tasks
 # create a playbook to install nginx in web node
-
 ---
 
 # which host to perform the task
@@ -98,6 +97,24 @@ sudo nano nginx-playbook.yml
 # ensure status of nginx is actively running (systemctl)
 
 # adhoc command to check the status
+
+# configure reverse proxy
+
+  - name: Customize Nginx default configuration file
+    lineinfile:
+      path: /etc/nginx/sites-available/default
+      regexp: '^(\s*try_files.*)$'
+      line: '        proxy_pass http://localhost:3000;'
+
+# restart nginx
+
+  - name: Restart Nginx service
+    service:
+      name: nginx
+      state: restarted
+
+
+
 
 ```
 
@@ -128,57 +145,63 @@ sudo nano nodejs-playbook.yml
 
 ```
 ---
-
-# Which host to perform the task
+# which host to perform
 - hosts: web
 
-# See the logs by gathering facts
-  gather_facts: yes
+# see the log by gathering facts
+# gathering_facts: yes
 
-# admin access is required.
+# admin access
   become: true
 
-# add the instructions - install Nodejs - web
+# install nodejs
   tasks:
+  # add the instructions  -  install node 12 with pm2 and run the app
+  - name: Installing node v 12the gog key for nodejs
+    apt_key:
+      url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+      state: present
 
-  - name: Update apt cache
-    apt:
-      update_cache: yes
+  - name: Add NodeSource repository
+    apt_repository:
+      repo: "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
+      state: present
 
-  - name: Ugrade packages
-    apt:
-      upgrade: dist
 
-  - name: Clone repository
+  - name: Clone the Git repository
     git:
       repo: https://github.com/kshrestha94/tech241_sparta_app.git
-      dest: app
+      dest: /home/ubuntu/app
 
+    become: yes
 
-  - name: Installing Node.js
+  - name: Install Node.js
     apt:
-      state=present
+      name: nodejs
+      state: present
+      update_cache: yes
+
+  - name: Install PM2
+    npm:
+      name: pm2
+      global: yes
+      state: present
+      version: "4.5.6"
 
 
-  - name: Installing npm
-    shell: npm install
+  - name: Install app dependencies
+    command: npm install
     args:
-       chdir: /home/ubuntu/app/app
-       warn: false
+      chdir: /home/ubuntu/app/app/
 
-  - name: Npm start
-    command: sudo npm start
+
+  - name: Start the Node.js app
+    command: pm2 start app.js
     args:
-       chdir: /home/ubuntu/app/app
+      chdir: /home/ubuntu/app/app
 ```
 
-`npm start will hang but if you go to your web vm public IP:3000 sparta app will load.`
 
-# pending tasks
-
-automate using pm2 
-
-add reverse proxy 
 
 
 
