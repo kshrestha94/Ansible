@@ -348,3 +348,13 @@ sudo node seeds/seed.js
 
 ```
 
+# in nodejs-playbook.yml to automate process of running playbook
+
+```
+
+import: nginx-plyabook.yml
+import: mongodb-playbook.yml
+```
+
+[label](playbook.md)
+
