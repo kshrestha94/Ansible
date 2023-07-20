@@ -200,8 +200,50 @@ sudo nano nodejs-playbook.yml
     args:
       chdir: /home/ubuntu/app/app
 ```
+# creating a playbook for database (mongodb)
 
+![Alt text](<db ansible architecture.png>)
 
+# create new playbook for mongodb db 
+```
+sudo nano mongodb-playbook.yml
+```
 
+```
+---
 
+# create a playbook to install mongodb in db-machine/instance
 
+# who will be the host?
+
+- hosts: db
+
+# get the logs
+
+  gather_facts: yes
+
+# admin access
+  become: true
+
+# provide instructions - tasks
+
+  tasks:
+
+# intall mongodb
+
+  - name: Installing Mongodb
+    apt: pkg=mongodb state=present
+
+# ensure the db in runnning
+
+# check the status if it's running or not using adhoc commands
+
+```
+### run playbook
+```
+sudo ansible-playbook mongodb-playbook.yml
+```
+#### check if status is running 
+```
+sudo ansible db -a "systemctl status mongodb"
+```
