@@ -247,3 +247,102 @@ sudo ansible-playbook mongodb-playbook.yml
 ```
 sudo ansible db -a "systemctl status mongodb"
 ```
+
+# playbook with confiuring mongodb 
+
+```
+---
+
+# create a playbook to install mongodb in db-machine/instance
+
+# who will be the host?
+
+- hosts: db
+
+# get the logs
+
+  gather_facts: yes
+
+# admin access
+  become: true
+
+# provide instructions - tasks
+
+  tasks:
+
+# intall mongodb
+
+
+  - name: Installing Mongodb
+    apt: pkg=mongodb state=present
+
+# ensure the db in runnning
+# check the status if it's running or not using adhoc commands
+
+
+# add steps to make required changed to mongod.conf to chnage the IP
+# restart mongodb
+# enable mongodb
+
+  - name: Change MongoDB configuration
+    lineinfile:
+      path: /etc/mongodb.conf
+      regexp: '^bind_ip.*'
+      line: 'bind_ip = 0.0.0.0'
+      state: present
+
+# restart mongodb
+  - name: Restart MongoDB
+    service:
+      name: mongodb
+      state: restarted
+
+# enable mongodb
+
+  - name: Enable MongoDB
+    systemd:
+      name: mongodb
+      state: started
+      enabled: yes
+
+
+```
+`go back to the app machine`
+
+`create a env variable DB_HOST`
+
+`kill npm if needed`
+
+`restart the app - should connect to db`
+
+
+# nano into environments folder
+```
+sudo nano /etc/environment
+
+DB_HOST=mongodb://172.31.46.92:27017/post (IP address must be your db private ip)
+
+```
+# check processes associated with PM2
+```
+ps aux | grep PM2
+```
+
+# kill root process associated with pm2
+
+```
+sudo kill -9 7397
+
+```
+
+`restart the app by running node.js playbook`
+
+# if webb app posts page isnt seeding posts use command 
+
+```
+cd app/app/
+sudo node seeds/seed.js
+
+
+```
+
