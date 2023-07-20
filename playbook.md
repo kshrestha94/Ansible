@@ -323,6 +323,8 @@ sudo nano /etc/environment
 DB_HOST=mongodb://172.31.46.92:27017/post (IP address must be your db private ip)
 
 ```
+![Alt text](<sudo nano _etc_environment.png>)
+
 # check processes associated with PM2
 ```
 ps aux | grep PM2
