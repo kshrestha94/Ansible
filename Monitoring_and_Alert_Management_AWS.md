@@ -1,10 +1,8 @@
 
-# Monitoring and Alert Management with AWS
+# Monitoring and Alert Management with Amazon Web Services (AWS)
 
 ```
- This is a combination of services offered by (AWS) that enable monitoring of various resources and the generation of alerts or notifications based on user defined conditions.
-
-
+Services offered by AWS that enables monitoring of resources and the generation of alerts or notifications based on user defined conditions.
 ```
 
 # Simple Architecture
@@ -12,7 +10,7 @@
 ![Alt text](<cloudwatch and SNS.png>)
 
 ```
-A virtual computer resource on AWS which is called a EC2 instance.
+I created virtual computer resource on AWS which is referred as a EC2 instance.
 
 AWS CloudWatch service is a monitoring system that collects and track metrics from a virtual machine. This service allows monitoring resource utilization, and performance metrics.
 
@@ -21,7 +19,7 @@ Amazon (SNS) Simple Notification Service is a messaging service which enables se
 The SNS message distributor allows to publish messages or alerts to multiple subscribers simultaneously.
 ```
 
-# application demo of monitoring CPU utilization
+# Application Demo of Monitoring CPU Utilization
 
 ```
 I created a virtual machine, utilised these services by creating an infrastructure monitor on CloudWatch and setting up an alert SNS directly to my personal email. 
@@ -39,10 +37,15 @@ A common day to day example of this may be a simple text message notification re
 
 # What have I learnt? 
 
+ - `Powerful tool for monitoring different metrics.`
+
+ - `Sending timely notifications without human intervention.`
+
+
+
 Integration of both services 
-powerful tool for monitoring 
 detecting anomalies
-sending timely notifications without human intervention. 
+
 
 manage and respond to performance issues in AWS environment. 
 
