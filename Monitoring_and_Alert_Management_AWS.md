@@ -50,8 +50,9 @@ The approach i took to resolve this issue was reviewed my steps and checked my d
 
 once verified i was able to recieve notifications.
 
+```
 ![Alt text](<sns topic subcription confirmation 2.1.1.png>)
-
+```
 when seting the user defined threshold:
 
 - too low, you might receive too many notification or false alarms.

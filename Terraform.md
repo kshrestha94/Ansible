@@ -76,3 +76,33 @@ SpaceX: SpaceX, the aerospace manufacturer and space transportation company, use
 
 
 ![Alt text](<terraform version.png>)
+
+ # IaC
+
+![Alt text](<Terraform Architecture .png>)
+
+
+# Provisioning of Terraform
+```
+ensure keys are on local host 
+create enviromental variable (secret key and access key) - incapsulation
+
+```
+### Configuration file (main.tf) 
+```
+this will execute your set of instructions using a script. User the appropriate key:value pair language. {}
+assign the associated cloud provider.
+sg groups - inbound rules
+name of EC2 
+type - t2 micro
+```
+
+`deployment using file.pem`
+
+### Install configuration on newly created EC2 using Ansible 
+```
+using your playbook.yml 
+controller - nodes (ping)
+```
+
+
