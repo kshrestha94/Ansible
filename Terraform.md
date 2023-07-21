@@ -4,17 +4,18 @@
 
 ```
 Terraform is an open-source infrastructure as code (IaC) tool that allows you to define, provision, and manage your cloud resources and infrastructure in a declarative way. 
-
 It enables you to create, modify, and delete resources across various cloud providers using simple configuration files, providing a reliable and consistent way to manage infrastructure in a scalable manner.
 
 ```
 
 ### Why use Terraform?
 
+```
 Use Terraform to simplify and automate the management of your infrastructure, enabling you to provision and maintain cloud resources in a consistent, version-controlled manner, leading to increased efficiency, reduced manual errors, and easier collaboration among teams.
-
+```
 ### Benifits of using Terraform?
 
+```
 Terraform provides an efficient, flexible, and collaborative way to manage infrastructure, making it a popular choice for organizations embracing Infrastructure as Code practices.
 
 Infrastructure as Code (IaC): Terraform allows you to define your infrastructure using code, making it easier to version, review, and manage changes.
@@ -36,6 +37,7 @@ Version Control Integration: Terraform configuration files can be managed with v
 Cost Management: Terraform's plan feature allows you to preview changes before applying them, helping you understand potential cost implications.
 
 Community and Ecosystem: Terraform has a vibrant community, offering a wide range of modules and plugins to extend functionality and ease integration with other tools
+```
 
 ### Who are using Terraform in the industry?
 
