@@ -68,9 +68,5 @@ Monitoring and Alerting: CloudWatch provides comprehensive monitoring for AWS re
 Real-Time Event Processing: CloudWatch Events can capture and respond to events from various AWS services in real-time. By integrating with SNS, you can instantly notify relevant parties about critical events, such as instance terminations or API calls.
 
 Scalability and Auto-Scaling: CloudWatch can automatically monitor your resources and trigger auto-scaling actions based on predefined metrics. SNS can be used to inform administrators or teams when auto-scaling events occur.
-
-
-
 ```
-
 
