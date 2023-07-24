@@ -199,7 +199,31 @@ terraform destroy
 ```
 ![Alt text](<terraform destroyed.png>)
 
-# Adding more dependencies VPC, SG 
+
+# Adding more dependencies VPC, internet gateway,subnets, route tables
+
+![Alt text](<vpc diagram.png>)
+
+```
+The architecture shows the internet gateway, router, subnets (public and private and thier associated security group rules)
+
+```
+`VPC implementation`
+```
+resource "aws_vpc" "tech241-kevin-vpc-terraform" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "tech241-kevin-vpc-terraform"
+  }
+}
+
+```
+
+# script dependencies to add network acl, route table, sg and subnets...
+
+
 
 `deployment using file.pem`
 
