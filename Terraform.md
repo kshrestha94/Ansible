@@ -208,7 +208,7 @@ terraform destroy
 The architecture shows the internet gateway, router, subnets (public and private and thier associated security group rules)
 
 ```
-`VPC implementation`
+`VPC implementation and dependencies`
 ```
 resource "aws_vpc" "tech241-kevin-vpc-terraform" {
   cidr_block       = "10.0.0.0/16"
@@ -221,7 +221,21 @@ resource "aws_vpc" "tech241-kevin-vpc-terraform" {
 
 ```
 
-# script dependencies to add network acl, route table, sg and subnets...
+### script dependencies to add network acl, route table, sg and subnets...
+
+# Planning and Design 
+
+1. finalise a working script of your main.tf including all dependencies
+
+2. Ensure you have a varibales.tf file to save all variables listed on your script
+
+3. Ensure you have created a .gitignore file including a hard code of all information you want hidden prior to pushing to github.
+
+4. work on your dev script and ensure working VPC 
+
+5. add codifying autoscaling, loadbalancer and template.
+
+6. add monitoring and alert (cloudwatch, SNS and SQS)
 
 
 
